@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/Feedback',[FeedbackController::class,'index'])->name('Feedback');
+Route::post('/Feedback/Store',[FeedbackController::class,'store'])->name('Feedback.Store');
